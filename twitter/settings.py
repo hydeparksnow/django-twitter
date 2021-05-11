@@ -25,8 +25,7 @@ SECRET_KEY = 'r7#p9b+-f$j$1vchfs+p0x$6)0=9_=p2_(47h)c^b=$#&8*l=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', '192.168.33.10', 'localhost']
 
 # Application definition
 
@@ -75,11 +74,14 @@ WSGI_APPLICATION = 'twitter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'twitter',
+        'HOST': '0.0.0.0',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': 'yourpassword',    # 这里是自己下载mysql时候输入两次的那个密码
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
