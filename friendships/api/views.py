@@ -18,7 +18,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
     @action(methods=['GET'], detail=True, permission_classes=[AllowAny])
     def followers(self, request, pk):
         # GET /api/friendships/1/followers
-        friendships = Friendship.objects.filter(to_user_id=pk).order_by('-created_at')
+        friendships = Friendship.objects.filter(to_user_id=pk)
         serializer = FollowerSerializer(friendships, many=True)
         return Response(
             {'followers': serializer.data},
@@ -28,7 +28,7 @@ class FriendshipViewSet(viewsets.GenericViewSet):
     @action(methods=['GET'], detail=True, permission_classes=[AllowAny])
     def followings(self, request, pk):
         # GET /api/friendships/1/followers
-        friendships = Friendship.objects.filter(from_user_id=pk).order_by('-created_at')
+        friendships = Friendship.objects.filter(from_user_id=pk)
         serializer = FollowingSerializer(friendships, many=True)
         return Response(
             {'followings': serializer.data},
